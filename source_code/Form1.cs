@@ -54,24 +54,6 @@ namespace DirectorySearcher
             return fbd.SelectedPath;
         }
 
-        public DirectoryInfo GetFileList(String path)
-        {
-            DirectoryInfo di = new DirectoryInfo(path);
-            foreach (FileInfo f in di.GetFiles("*.exe"))
-            {
-                System.Diagnostics.FileVersionInfo vi = System.Diagnostics.FileVersionInfo.GetVersionInfo(f.FullName);
-                this.exeFileList.Text += f.Name + " : " + vi.FileVersion + "\r\n";
-            }
-
-            foreach (FileInfo f in di.GetFiles("*.dll"))
-            {
-                System.Diagnostics.FileVersionInfo vi = System.Diagnostics.FileVersionInfo.GetVersionInfo(f.FullName);
-                this.dllFileList.Text += f.Name + " : " + vi.FileVersion + "\r\n";
-            }
-
-            return di;
-        }
-
         public void DirSearch(String path)
         {
             DirectoryInfo di = new DirectoryInfo(path);
